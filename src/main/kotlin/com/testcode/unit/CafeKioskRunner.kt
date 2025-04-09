@@ -2,6 +2,7 @@ package com.testcode.unit
 
 import com.testcode.unit.beverage.Americano
 import com.testcode.unit.beverage.Latte
+import java.time.LocalDateTime
 
 class CafeKioskRunner
 
@@ -15,4 +16,6 @@ fun main() {
     
     val totalPrice = cafeKiosk.calculateTotalPrice()
     println("총 주문 가격 : $totalPrice")
+
+    cafeKiosk.createOrder(LocalDateTime.now())
 }

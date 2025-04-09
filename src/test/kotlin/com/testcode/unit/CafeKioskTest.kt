@@ -4,13 +4,14 @@ import com.testcode.unit.beverage.Americano
 import com.testcode.unit.beverage.Latte
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.Test
+import java.time.LocalDateTime
 
 class CafeKioskTest {
 
-    // 다른 사람이 이 코드 봤을때 무엇을 검증하는건지 모름 무조건 성공하는 케이스이기 때문에
     @Test
-    fun `계산 더하기`() {
+    fun `계산 더하기 테스트`() {
         val cafeKiosk = CafeKiosk()
         cafeKiosk.add(Americano())
         cafeKiosk.add(Latte())
@@ -22,12 +23,35 @@ class CafeKioskTest {
     }
 
     @Test
-    fun `정상 동작 테스트`() {
+    fun `음료 추가 테스트`() {
         val cafeKiosk = CafeKiosk()
         cafeKiosk.add(Americano())
 
         assertThat(cafeKiosk.beverages.size).isEqualTo(1)
         assertThat(cafeKiosk.beverages[0].getName()).isEqualTo("아메리카노")
+    }
+
+    @Test
+    fun `음료 카운팅으로 추가`() {
+        val cafeKiosk = CafeKiosk()
+        val americano = Americano()
+
+        cafeKiosk.add(americano, 2)
+
+        assertThat(cafeKiosk.beverages[0]).isEqualTo(americano)
+        assertThat(cafeKiosk.beverages[1]).isEqualTo(americano)
+    }
+
+    @Test
+    fun `음료를 0개 추가시 예외`() {
+        val cafeKiosk = CafeKiosk()
+        val americano = Americano()
+
+        val exception = assertThrows<IllegalArgumentException> {
+            cafeKiosk.add(americano, 0)
+        }
+
+        assertThat(exception.message).isEqualTo("음료는 1잔 이상 주문하실 수 있습니다.")
     }
 
     @Test
@@ -55,4 +79,33 @@ class CafeKioskTest {
         cafeKiosk.clear()
         assertThat(cafeKiosk.beverages).isEmpty()
     }
+
+    // 항상 성공하는 테스트가 아님
+    // 주문 시간 범위밖이면 예외가 발생함
+    @Test
+    fun `주문 생성`() {
+        val cafeKiosk = CafeKiosk()
+        val americano = Americano()
+
+        cafeKiosk.add(americano)
+        val order = cafeKiosk.createOrder(LocalDateTime.of(2025, 1, 1, 11, 0, 0))
+
+        assertThat(order.beverage).hasSize(1)
+        assertThat(order.beverage[0].getName()).isEqualTo("아메리카노")
+    }
+
+    @Test
+    fun `주문 생성시간 이외인 경우 예외`() {
+        val cafeKiosk = CafeKiosk()
+        val americano = Americano()
+
+        cafeKiosk.add(americano)
+
+        val exception = assertThrows<IllegalArgumentException> {
+            cafeKiosk.createOrder(LocalDateTime.of(2025, 1, 1, 23, 0, 0))
+        }
+
+        assertThat(exception.message).isEqualTo("주문 시간이 아닙니다. 관리자에게 문의하세요.")
+    }
+
 }

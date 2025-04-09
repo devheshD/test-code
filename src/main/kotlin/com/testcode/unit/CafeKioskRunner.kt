@@ -13,7 +13,7 @@ fun main() {
 
     cafeKiosk.add(Latte())
     println(">> 라떼 추가")
-    
+
     val totalPrice = cafeKiosk.calculateTotalPrice()
     println("총 주문 가격 : $totalPrice")
 

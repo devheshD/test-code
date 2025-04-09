@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 class CafeKioskTest {
 
     @Test
-    fun `계산 더하기 테스트`() {
+    fun `음료 계산을 더한값 검증`() {
         val cafeKiosk = CafeKiosk()
         cafeKiosk.add(Americano())
         cafeKiosk.add(Latte())
@@ -23,7 +23,7 @@ class CafeKioskTest {
     }
 
     @Test
-    fun `음료 추가 테스트`() {
+    fun `음료 추가`() {
         val cafeKiosk = CafeKiosk()
         cafeKiosk.add(Americano())
 
@@ -55,7 +55,7 @@ class CafeKioskTest {
     }
 
     @Test
-    fun `음료 제거 테스트`() {
+    fun `음료 단건 제거`() {
         val cafeKiosk = CafeKiosk()
         val americano = Americano()
 
@@ -67,7 +67,7 @@ class CafeKioskTest {
     }
 
     @Test
-    fun `음료 클리어 테스트`() {
+    fun `음료 전체 삭제`() {
         val cafeKiosk = CafeKiosk()
         val americano = Americano()
         val latte = Latte()
@@ -80,8 +80,6 @@ class CafeKioskTest {
         assertThat(cafeKiosk.beverages).isEmpty()
     }
 
-    // 항상 성공하는 테스트가 아님
-    // 주문 시간 범위밖이면 예외가 발생함
     @Test
     fun `주문 생성`() {
         val cafeKiosk = CafeKiosk()

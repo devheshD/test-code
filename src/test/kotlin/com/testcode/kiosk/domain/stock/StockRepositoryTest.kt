@@ -1,8 +1,5 @@
 package com.testcode.kiosk.domain.stock
 
-import com.testcode.kiosk.domain.product.Product
-import com.testcode.kiosk.domain.product.ProductSellingStatus
-import com.testcode.kiosk.domain.product.ProductType
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.tuple
 import org.junit.jupiter.api.Test

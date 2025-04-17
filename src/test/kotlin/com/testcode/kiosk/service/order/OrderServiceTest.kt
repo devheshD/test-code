@@ -8,9 +8,7 @@ import com.testcode.kiosk.domain.product.ProductType
 import com.testcode.kiosk.domain.stock.Stock
 import com.testcode.kiosk.domain.stock.StockRepository
 import com.testcode.kiosk.service.order.request.OrderCreateRequest
-import jakarta.transaction.Transactional
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.AssertionsForClassTypes.tuple
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.assertThrows

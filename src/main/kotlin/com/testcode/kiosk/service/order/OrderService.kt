@@ -8,8 +8,8 @@ import com.testcode.kiosk.domain.product.ProductType
 import com.testcode.kiosk.domain.stock.StockRepository
 import com.testcode.kiosk.service.order.request.OrderCreateRequest
 import com.testcode.kiosk.service.order.response.OrderResponse
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Transactional

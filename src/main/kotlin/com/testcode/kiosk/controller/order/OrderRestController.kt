@@ -15,6 +15,6 @@ class OrderRestController(
     @PostMapping("/api/v1/orders/new")
     fun createOrder(@RequestBody request: OrderCreateRequest): OrderResponse {
         val registeredDateTime = LocalDateTime.now()
-        return orderService.createOrder(request, registeredDateTime)
+        return orderService.createOrder(request.toServiceRequest(), registeredDateTime)
     }
 }

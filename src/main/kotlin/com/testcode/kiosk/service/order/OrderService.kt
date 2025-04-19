@@ -7,6 +7,7 @@ import com.testcode.kiosk.domain.product.ProductRepository
 import com.testcode.kiosk.domain.product.ProductType
 import com.testcode.kiosk.domain.stock.StockRepository
 import com.testcode.kiosk.service.order.request.OrderCreateRequest
+import com.testcode.kiosk.service.order.request.OrderCreateServiceRequest
 import com.testcode.kiosk.service.order.response.OrderResponse
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -23,7 +24,7 @@ class OrderService(
      * 재고 감소 -> 동시성 고민..
      * optimistic lock, pessimistic lock
      */
-    fun createOrder(request: OrderCreateRequest, registeredDateTime: LocalDateTime): OrderResponse {
+    fun createOrder(request: OrderCreateServiceRequest, registeredDateTime: LocalDateTime): OrderResponse {
         val productNumbers = request.productNumbers
         val products = findProductsBy(productNumbers)
 

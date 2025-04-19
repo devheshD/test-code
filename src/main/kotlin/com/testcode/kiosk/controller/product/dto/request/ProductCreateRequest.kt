@@ -3,6 +3,7 @@ package com.testcode.kiosk.controller.product.dto.request
 import com.testcode.kiosk.domain.product.Product
 import com.testcode.kiosk.domain.product.ProductSellingStatus
 import com.testcode.kiosk.domain.product.ProductType
+import com.testcode.kiosk.service.product.request.ProductCreateServiceRequest
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
@@ -22,8 +23,7 @@ data class ProductCreateRequest(
     @Positive(message = "상품 가격은 양수여야 합니다.")
     val price: Int,
 ) {
-    fun toEntity(productNumber: String) = Product(
-        productNumber = productNumber,
+    fun toProductCreateServiceRequest() = ProductCreateServiceRequest(
         type = type,
         sellingStatus = sellingStatus,
         name = name,

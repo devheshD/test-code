@@ -6,15 +6,12 @@ import com.testcode.kiosk.controller.product.dto.request.ProductCreateRequest
 import com.testcode.kiosk.domain.product.ProductSellingStatus
 import com.testcode.kiosk.domain.product.ProductType
 import com.testcode.kiosk.service.product.ProductService
-import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType.*
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import kotlin.test.Test
 
@@ -27,8 +24,7 @@ class ProductControllerTest {
     @Autowired
     lateinit var objectMapper: ObjectMapper
 
-    @MockBean
-    @Suppress("DEPRECATION")
+    @MockitoBean
     lateinit var productService: ProductService
 
     @Test

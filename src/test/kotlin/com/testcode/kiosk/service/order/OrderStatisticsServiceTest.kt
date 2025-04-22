@@ -10,17 +10,13 @@ import com.testcode.kiosk.domain.product.Product
 import com.testcode.kiosk.domain.product.ProductRepository
 import com.testcode.kiosk.domain.product.ProductSellingStatus
 import com.testcode.kiosk.domain.product.ProductType
-import com.testcode.kiosk.service.mail.MailService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.bean.override.mockito.MockitoBean
 import java.time.LocalDate
 import java.time.LocalDateTime

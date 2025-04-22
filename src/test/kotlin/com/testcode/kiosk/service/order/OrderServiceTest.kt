@@ -7,7 +7,7 @@ import com.testcode.kiosk.domain.product.ProductSellingStatus
 import com.testcode.kiosk.domain.product.ProductType
 import com.testcode.kiosk.domain.stock.Stock
 import com.testcode.kiosk.domain.stock.StockRepository
-import com.testcode.kiosk.service.order.request.OrderCreateRequest
+import com.testcode.kiosk.service.order.request.OrderCreateServiceRequest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.AssertionsForClassTypes.tuple
 import org.junit.jupiter.api.AfterEach
@@ -58,7 +58,7 @@ class OrderServiceTest {
         val product3 = createProduct(ProductType.HANDMADE, "003", 5000)
         productRepository.saveAll(listOf(product1, product2, product3))
 
-        val request = OrderCreateRequest(
+        val request = OrderCreateServiceRequest(
             productNumbers = listOf("001", "002")
         )
 
@@ -87,7 +87,7 @@ class OrderServiceTest {
         val product3 = createProduct(ProductType.HANDMADE, "003", 5000)
         productRepository.saveAll(listOf(product1, product2, product3))
 
-        val request = OrderCreateRequest(
+        val request = OrderCreateServiceRequest(
             productNumbers = listOf("001", "001")
         )
 
@@ -120,7 +120,7 @@ class OrderServiceTest {
         val stock2 = Stock.create("002", 2)
         stockRepository.saveAll(listOf(stock1, stock2))
 
-        val request = OrderCreateRequest(
+        val request = OrderCreateServiceRequest(
             productNumbers = listOf("001", "001", "002", "003")
         )
 
@@ -165,7 +165,7 @@ class OrderServiceTest {
         stock1.deductQuantity(1) // todo
         stockRepository.saveAll(listOf(stock1, stock2))
 
-        val request = OrderCreateRequest(
+        val request = OrderCreateServiceRequest(
             productNumbers = listOf("001", "001", "002", "003")
         )
 

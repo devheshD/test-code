@@ -1,10 +1,10 @@
 package com.testcode.kiosk.service.product
 
-import com.testcode.kiosk.controller.product.dto.request.ProductCreateRequest
 import com.testcode.kiosk.domain.product.Product
 import com.testcode.kiosk.domain.product.ProductRepository
 import com.testcode.kiosk.domain.product.ProductSellingStatus
 import com.testcode.kiosk.domain.product.ProductType
+import com.testcode.kiosk.service.product.request.ProductCreateServiceRequest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.tuple
 import org.junit.jupiter.api.AfterEach
@@ -34,7 +34,7 @@ class ProductServiceTest {
         val product = createProduct("001", ProductType.HANDMADE, ProductSellingStatus.SELLING, "아메리카노", 4000)
         productRepository.save(product)
 
-        val request = ProductCreateRequest(
+        val request = ProductCreateServiceRequest(
             type = ProductType.HANDMADE,
             sellingStatus = ProductSellingStatus.SELLING,
             name = "카푸치노",
@@ -60,7 +60,7 @@ class ProductServiceTest {
     @Test
     fun `상품이 하나도 없는 경우 신규 상품을 등록하면 상품번호는 001이다`() {
         // given
-        val request = ProductCreateRequest(
+        val request = ProductCreateServiceRequest(
             type = ProductType.HANDMADE,
             sellingStatus = ProductSellingStatus.SELLING,
             name = "카푸치노",
